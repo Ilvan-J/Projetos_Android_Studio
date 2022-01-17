@@ -73,7 +73,6 @@ public class BancoController {
 
     public Cursor carregarPorStatus(String status){
         Cursor cursor = null;
-        //String naoFinalizado = "'Em andamento'";
         String where = CriaBanco.STATUS_ANIME + "=" + "'" + status + "'";
 
         db = banco.getReadableDatabase();
