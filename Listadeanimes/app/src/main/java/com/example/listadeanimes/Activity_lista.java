@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.listadeanimes.database.BancoController;
@@ -81,6 +82,19 @@ public class Activity_lista extends AppCompatActivity{
         lista.setAdapter(adaptador);
     }
 
+    public void ordenarPorStatus(String status){
+
+        cursor = crud.carregarPorStatus(status);
+
+        String[] nomeCampos = new String[]{"_id", "nome", "temporadas"};
+        int[] idView = new int[]{R.id.idAnime, R.id.nomeAnime, R.id.temporadaAnime};
+
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(this, R.layout.estilizar, cursor, nomeCampos, idView, 0);
+
+        lista.setAdapter(adaptador);
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -125,6 +139,12 @@ public class Activity_lista extends AppCompatActivity{
                 return true;
             case R.id.ordem_id:
                 ordenarId();
+                return true;
+            case R.id.ordem_Finalizado:
+                ordenarPorStatus("Finalizado");
+                return true;
+            case R.id.ordem_Andamento:
+                ordenarPorStatus("Em andamento");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

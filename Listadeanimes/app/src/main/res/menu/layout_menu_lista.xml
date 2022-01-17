@@ -7,6 +7,12 @@
     <item android:id="@+id/ordem_id"
           android:title="Ordenar por id"
         />
+    <item android:id="@+id/ordem_Finalizado"
+          android:title="Finalizados"
+        />
+    <item android:id="@+id/ordem_Andamento"
+        android:title="Não finalizados"
+        />
     <item
         android:id="@+id/pesquisa"
         android:icon="@android:drawable/ic_menu_search"

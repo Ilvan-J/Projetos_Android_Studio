@@ -71,6 +71,29 @@ public class BancoController {
 
     }
 
+    public Cursor carregarPorStatus(String status){
+        Cursor cursor = null;
+        //String naoFinalizado = "'Em andamento'";
+        String where = CriaBanco.STATUS_ANIME + "=" + "'" + status + "'";
+
+        db = banco.getReadableDatabase();
+
+        try {
+            cursor = db.query(CriaBanco.TABELA, null, where, null, null, null, CriaBanco.NOME, null);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        db.close();
+
+        return cursor;
+
+    }
+
     public Cursor carregarDadoById(int id){
         Cursor cursor;
         String[] campos = {banco.ID, banco.NOME, banco.TEMPORADAS,banco.STATUS_ANIME, banco.STATUS_PESSOAL};
@@ -87,6 +110,7 @@ public class BancoController {
         return cursor;
 
     }
+    
 
     public Cursor pesquisar(String p){
         Cursor cursor;
