@@ -95,6 +95,18 @@ public class Activity_lista extends AppCompatActivity{
 
     }
 
+    public void ordernarStatusPessoal(String status){
+        cursor = crud.carregarStatusUsuario(status);
+
+        String[] nomecampos= new String[]{"_id", "nome", "temporadas"};
+        int[] idView = new int[]{R.id.idAnime, R.id.nomeAnime, R.id.temporadaAnime};
+
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(this, R.layout.estilizar, cursor, nomecampos, idView, 0);
+
+        lista.setAdapter(adaptador);
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -145,6 +157,12 @@ public class Activity_lista extends AppCompatActivity{
                 return true;
             case R.id.ordem_Andamento:
                 ordenarPorStatus("Em andamento");
+                return true;
+            case R.id.Assisti:
+                ordernarStatusPessoal("Assisti");
+                return true;
+            case R.id.Nao_assistido:
+                ordernarStatusPessoal("Em andamento");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

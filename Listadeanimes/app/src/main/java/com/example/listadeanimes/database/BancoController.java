@@ -54,8 +54,6 @@ public class BancoController {
 
     }
 
-
-
     public  Cursor carregarOrdemAlfabetica(){
         Cursor cursor;
 
@@ -74,6 +72,30 @@ public class BancoController {
     public Cursor carregarPorStatus(String status){
         Cursor cursor = null;
         String where = CriaBanco.STATUS_ANIME + "=" + "'" + status + "'";
+
+        db = banco.getReadableDatabase();
+
+        try {
+            cursor = db.query(CriaBanco.TABELA, null, where, null, null, null, CriaBanco.NOME, null);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        db.close();
+
+        return cursor;
+
+    }
+
+    public Cursor carregarStatusUsuario(String status){
+
+        Cursor cursor = null;
+
+        String where = CriaBanco.STATUS_PESSOAL + "=" + "'" + status + "'";
 
         db = banco.getReadableDatabase();
 

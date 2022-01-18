@@ -7,12 +7,28 @@
     <item android:id="@+id/ordem_id"
           android:title="Ordenar por id"
         />
-    <item android:id="@+id/ordem_Finalizado"
-          android:title="Finalizados"
-        />
-    <item android:id="@+id/ordem_Andamento"
-        android:title="Não finalizados"
-        />
+    <item android:id="@+id/status_usuario"
+          android:title="Status usuário">
+        <menu>
+            <item android:id="@+id/Assisti"
+                  android:title="Assistido"
+                />
+            <item android:id="@+id/Nao_assistido"
+                  android:title="Não assistido"
+                />
+        </menu>
+    </item>
+    <item android:id="@+id/status_anime"
+          android:title="Status Anime">
+        <menu>
+            <item android:id="@+id/ordem_Finalizado"
+                android:title="Finalizados"
+                />
+            <item android:id="@+id/ordem_Andamento"
+                android:title="Não finalizados"
+                />
+        </menu>
+    </item>
     <item
         android:id="@+id/pesquisa"
         android:icon="@android:drawable/ic_menu_search"
